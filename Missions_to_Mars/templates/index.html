@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="jquery.js"></script>
+
+  <title>Mission to Mars</title>
+</head>
+
+<body>
+ 
+  <div class="container">
+    <div class="col col-md-12 jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scape New Data</a></p>
+    </div>
+    <!-- Mars Data display -->
+    {% if marsinfo %}
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col col-lg-8 col-lg-12">
+          <div class="content-section">
+            <h2 class="heading">Latest Mars News</h2>
+            <hr>
+            <!--p class='text-muted summary'-->
+            <h4>{{ marsinfo.news_title }}</h4>
+            <h6>{{ marsinfo.news_p }}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-lg-8">
+          <div class="content-section">
+            <br>
+            <h3>Featured Mars Image</h3>
+            <hr>
+            <!--p class='text-muted summary'-->
+            <img src="{{ marsinfo.featuredimageurl }}" class="summary jtext col" />
+          </div>
+        </div>
+        <div class="col col-12 col-lg-4">
+          <div class="content-section">
+            <div class="row">
+              <div class="content-section">
+                <br>
+                <h5>Current Weather on Mars</h5>
+                <hr>
+                <div class='img-thumbnail'> {{ marsinfo.mars_weather }} </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="content-section">
+                <br>
+                <h5>Mars Facts</h5>
+                <hr>
+                <div>{{ marsinfo.mars_facts | safe }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-lg-12">
+            <div class="content-section">
+              <h2 class="heading"></h2>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div role="main">
+          <div class="container">
+            <div class="row col-14">
+              <div class="col col-12  col-14 text-center">
+                <br><br>
+                <h3>Mars Hemispheres</h3>
+                <hr>
+              </div>
+              <div class="col col-lg-6 col-12 col-14">
+                <img src="{{ marsinfo.hemisphereimageurls[0].img_url }}" class="col-12 img-thumbnail">
+                <br>
+                <h5>{{marsinfo.hemisphereimageurls[0].title }}</h5> </img>
+                <hr>
+              </div>
+              <div class="col col-lg-6 col-12  col-14">
+                <img src="{{ marsinfo.hemisphereimageurls[1].img_url }}" class="col-12 img-thumbnail">
+                <br>
+                <h5>{{marsinfo.hemisphereimageurls[1].title }}</h5></img>
+                <hr>
+              </div>
+              <div class="col col-lg-6 col-12  col-14">
+                <img src="{{ marsinfo.hemisphereimageurls[2].img_url }}" class="col-12 img-thumbnail">
+                <br>
+                <h5>{{marsinfo.hemisphereimageurls[2].title }}</h5></img>
+                <hr>
+              </div>
+              <div class="col col-lg-6 col-12  col-14">
+                <img src="{{ marsinfo.hemisphereimageurls[3].img_url }}" class="col-12 img-thumbnail">
+                <br>
+                <h5>{{marsinfo.hemisphereimageurls[3].title }}</h5> </img>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+    </main>
+    {% endif %}
+  </div>
+</body>
+
+</html>
